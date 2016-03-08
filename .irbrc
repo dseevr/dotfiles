@@ -10,7 +10,8 @@ require 'irbtools'
 require 'irbtools/more'
 
 require "did_you_mean"
-require "looksee"
+# broken as of 2.3.0 due to API changes...
+# require "looksee"
 require "binding_of_caller"
 require "bond"
 
