@@ -13,6 +13,12 @@
     go-eldoc
     go-autocomplete
 
+    ido-ubiquitous
+    ido-vertical-mode
+    ido-yes-or-no
+
+    find-file-in-repository
+
         ;;;;;; Markdown
     markdown-mode
 
@@ -71,10 +77,6 @@
   (local-set-key (kbd "M-.") 'godef-jump))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
-;;Load auto-complete
-(ac-config-default)
-(require 'auto-complete-config)
-(require 'go-autocomplete)
 
 (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
 (require 'golint)
