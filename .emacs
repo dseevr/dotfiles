@@ -129,3 +129,16 @@
 (setq ac-menu-height 40)
 (setq ac-ignore-case 'smart)
 (setq make-backup-files nil)
+
+(with-eval-after-load 'go-mode
+   (require 'go-autocomplete))
+
+
+;; from: https://github.com/spotify/dockerfile-mode
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+
