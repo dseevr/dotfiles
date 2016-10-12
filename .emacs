@@ -17,6 +17,8 @@
     ido-vertical-mode
     ido-yes-or-no
 
+    git-gutter
+
     find-file-in-repository
 
         ;;;;;; Markdown
@@ -97,7 +99,10 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(custom-safe-themes
    (quote
-    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default))))
+    ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(shift-select-mode t)
+ '(show-trailing-whitespace t)
+ '(track-eol t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -141,4 +146,14 @@
 
 (global-set-key (kbd "C-x <up>") 'windmove-up)
 (global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+
+
+;; github.com/syohex/emacs-git-gutter
+(require 'git-gutter)
+(global-git-gutter-mode +1)
+
+;;(custom-set-variables
+;; '(git-gutter:update-interval 2))
 
