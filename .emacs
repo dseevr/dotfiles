@@ -159,3 +159,5 @@
 
 (setq auto-save-default nil)
 
+(setq column-number-mode t)
+
