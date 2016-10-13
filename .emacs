@@ -96,10 +96,11 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(menu-bar-mode nil)
  '(shift-select-mode t)
  '(show-trailing-whitespace t)
  '(track-eol t))
@@ -160,4 +161,6 @@
 (setq auto-save-default nil)
 
 (setq column-number-mode t)
+
+(setq create-lockfiles nil)
 
