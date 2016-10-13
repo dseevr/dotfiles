@@ -157,3 +157,5 @@
 ;;(custom-set-variables
 ;; '(git-gutter:update-interval 2))
 
+(setq auto-save-default nil)
+
