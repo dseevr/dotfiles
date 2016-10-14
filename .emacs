@@ -13,6 +13,8 @@
     go-eldoc
     go-autocomplete
 
+    exec-path-from-shell
+
     ido-ubiquitous
     ido-vertical-mode
     ido-yes-or-no
@@ -101,6 +103,9 @@
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (git-gutter window-number smooth-scroll project-explorer markdown-mode json-mode ido-yes-or-no ido-vertical-mode ido-ubiquitous go-eldoc go-autocomplete find-file-in-repository exec-path-from-shell buffer-move)))
  '(shift-select-mode t)
  '(show-trailing-whitespace t)
  '(track-eol t))
