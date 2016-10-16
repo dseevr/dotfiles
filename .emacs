@@ -1,3 +1,29 @@
+;; setup:
+;; go get github.com/golang/lint/golint
+;; go get github.com/gordonklaus/ineffassign
+;; go get github.com/fzipp/gocyclo
+;; go get github.com/client9/misspell/...
+;; go get github.com/remyoudompheng/go-misc/deadcode/...
+;; go get -u github.com/nsf/gocode
+;; go get golang.org/x/tools/cmd/goimports
+;; go get github.com/rogpeppe/godef
+;;
+;; ;; Oracle is now called guru
+;; go get golang.org/x/tools/cmd/guru
+;; go build golang.org/x/tools/cmd/guru
+;; mv guru $GOPATH/bin
+;; ln -s ~/go/bin/guru ~/go/bin/oracle
+;;
+;; manually copy dockerfile-mode.el to ~/.emacs.d/extensions
+;; from: https://github.com/spotify/dockerfile-mode
+;;
+;; manually copy git-gutter.el to ~/.emacs.d/extensions
+;; from https://github.com/syohex/emacs-git-gutter
+;;
+;; manually copy go-autocomplete.el to ~/.emacs.d/extensions
+;; from: https://github.com/nsf/gocode/tree/master/emacs
+;;
+
 ;;Load package-install sources
 (when (>= emacs-major-version 24)
   (require 'package)
