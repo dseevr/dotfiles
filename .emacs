@@ -23,6 +23,16 @@
 ;; manually copy go-autocomplete.el to ~/.emacs.d/extensions
 ;; from: https://github.com/nsf/gocode/tree/master/emacs
 ;;
+;; manually clone async from https://github.com/jwiegley/emacs-async
+;; because melpa isn't auto-installing it properly
+;; git clone https://github.com/jwiegley/emacs-async.git ~/.emacs.d/packages/async
+;;
+;; manually clone helm from https://github.com/emacs-helm/helm
+;; because melpa can't auto-install it because async can't auto-install lol
+;; git clone https://github.com/emacs-helm/helm.git ~/.emacs.d/packages/helm
+;;
+;; run `make` in the helm dir
+;;
 
 ;;Load package-install sources
 (when (>= emacs-major-version 24)
@@ -49,12 +59,10 @@
 
     find-file-in-repository
 
-        ;;;;;; Markdown
     markdown-mode
 
-        ;;;;;; Javascript
     json-mode
-        ;;;;;; Env
+
     project-explorer
     smooth-scroll
     buffer-move
@@ -195,3 +203,10 @@
 
 (setq create-lockfiles nil)
 
+(add-to-list 'load-path "~/.emacs.d/packages/async")
+(add-to-list 'load-path "~/.emacs.d/packages/helm")
+(require 'helm-config)
+
+(helm-mode 1)
+
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
