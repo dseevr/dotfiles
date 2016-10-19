@@ -78,33 +78,6 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;;Load Go-specific language syntax
-(defun go-mode-setup ()
-  (go-eldoc-setup))
-
-(add-hook 'go-mode-hook 'go-mode-setup)
-
-;;Format before saving
-(defun go-mode-setup ()
-  (go-eldoc-setup)
-  (add-hook 'before-save-hook 'gofmt-before-save))
-(add-hook 'go-mode-hook 'go-mode-setup)
-
-;;Goimports
-(defun go-mode-setup ()
-  (go-eldoc-setup)
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save))
-(add-hook 'go-mode-hook 'go-mode-setup)
-
-;;Godef, shows function definition when calling godef-jump
-(defun go-mode-setup ()
-  (go-eldoc-setup)
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  (local-set-key (kbd "M-.") 'godef-jump))
-(add-hook 'go-mode-hook 'go-mode-setup)
-
 ;;Custom Compile Command
 (defun go-mode-setup ()
   (setq compile-command "go build -v && go test -v && go vet && golint && errcheck")
