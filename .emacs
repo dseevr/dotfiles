@@ -183,3 +183,41 @@
 (helm-mode 1)
 
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
+
+
+(custom-set-faces
+ '(my-carriage-return-face ((((class color)) (:foreground "#464646"))) t)
+ '(my-tab-face ((((class color)) (:foreground "#363636"))) t)
+ '(my-space-face ((((class color)) (:foreground "#565656"))) t)
+)
+
+;; add custom font locks to all buffers and all files
+(add-hook
+ 'font-lock-mode-hook
+ (function
+  (lambda ()
+    (setq
+     font-lock-keywords
+     (append
+      font-lock-keywords
+      '(
+        ("\n" (0 'my-carriage-return-face t))
+        ("\r" (0 'my-carriage-return-face t))
+        ("\t" (0 'my-tab-face t))
+        ("\s" (0 'my-space-face t))
+        ))))))
+
+;; make characters after column 80 purple
+;;(setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
+;;(setq whitespace-style (quote (face trailing tab-mark lines-tail)))
+(setq whitespace-style (quote (space-mark face newline-mark tab-mark)))
+(add-hook 'find-file-hook 'whitespace-mode)
+
+;; transform literal tabs into a right-pointing triangle
+(setq
+ whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
+ '(
+   (tab-mark 9 [9654 9] [92 9])
+   (space-mark 32 [183] [46]) ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+   (newline-mark 10 [8617 10]) ; 8617 LEFTWARDS ARROW WITH HOOK
+   ))
