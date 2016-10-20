@@ -34,6 +34,9 @@
 ;; run `make` in the helm dir
 ;;
 
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 ;;Load package-install sources
 (when (>= emacs-major-version 24)
   (require 'package)
