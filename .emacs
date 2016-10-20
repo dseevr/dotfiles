@@ -58,10 +58,11 @@
     git-gutter
 
     find-file-in-repository
-
+    
     markdown-mode
 
     json-mode
+    yaml-mode
 
     project-explorer
     smooth-scroll
@@ -183,6 +184,9 @@
 (add-to-list 'load-path "~/.emacs.d/packages/helm")
 (require 'helm-config)
 
+(setq helm-mode-fuzzy-match t)
+(setq helm-completion-in-region-fuzzy-match t)
+
 (helm-mode 1)
 
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
@@ -224,3 +228,25 @@
    (space-mark 32 [183] [46]) ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
    (newline-mark 10 [8617 10]) ; 8617 LEFTWARDS ARROW WITH HOOK
    ))
+
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+;; from https://github.com/zachallaun/emacs-config/blob/master/init.el
+(setq confirm-nonexistent-file-or-buffer nil)
+(show-paren-mode 1)
+(setq system-uses-terminfo nil)
+
+(setq ido-enable-flex-matching t)
+(setq ido-flex-match t)
+(setq ido-everywhere t)
+(setq ido-case-fold t)
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil)))))
+(put 'upcase-region 'disabled nil)
