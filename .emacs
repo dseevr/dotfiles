@@ -167,6 +167,9 @@
 (require 'git-gutter)
 (global-git-gutter-mode +1)
 
+(custom-set-variables
+  '(git-gutter:window-width 2))
+
 ;;(custom-set-variables
 ;; '(git-gutter:update-interval 2))
 
