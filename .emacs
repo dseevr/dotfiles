@@ -198,8 +198,8 @@
 
 (custom-set-faces
  '(my-carriage-return-face ((((class color)) (:foreground "#464646"))) t)
- '(my-tab-face ((((class color)) (:foreground "#363636"))) t)
- '(my-space-face ((((class color)) (:foreground "#565656"))) t)
+ '(my-tab-face ((((class color)) (:foreground "#313131"))) t)
+ '(my-space-face ((((class color)) (:foreground "#464646"))) t)
 )
 
 ;; add custom font locks to all buffers and all files
