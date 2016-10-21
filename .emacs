@@ -145,6 +145,10 @@
 ;; from: https://www.emacswiki.org/emacs/buffer-move.el
 ;; TODO: need to re-run git-gutter after buffers are moved since the gutter vanishes
 (require 'buffer-move)
+(defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
+(global-set-key (kbd"C-x <") 'win-swap)
+(global-set-key (kbd"C-x >") 'win-swap)
+
 
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -200,6 +204,8 @@
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 
 
+;; TODO: write functions which will enable/disable/toggle drawing of whitespace
+;;       sometimes it's more convenient to copy lines using the terminal rather than in emacs itself
 (custom-set-faces
  '(my-carriage-return-face ((((class color)) (:foreground "#464646"))) t)
  '(my-tab-face ((((class color)) (:foreground "#313131"))) t)
