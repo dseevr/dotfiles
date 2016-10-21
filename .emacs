@@ -254,38 +254,20 @@
  '(default ((t (:background nil)))))
 (put 'upcase-region 'disabled nil)
 
-
-;; Automatically save and restore sessions
-;;(setq desktop-dirname             "~/.emacs.d/desktop/"
-;;      desktop-base-file-name      "emacs.desktop"
-;;      desktop-base-lock-name      "lock"
-;;      desktop-path                (list desktop-dirname)
-;;      desktop-save                t
-;;      desktop-files-not-to-save   "^$" ;reload tramp paths
-;;      desktop-load-locked-desktop nil)
-;;(desktop-save-mode 1)
-
 ;; use only one desktop
 (setq desktop-path '("~/.emacs.d/"))
 (setq desktop-dirname "~/.emacs.d/")
 (setq desktop-base-file-name "emacs-desktop")
+(setq desktop-lock-file "~/.emacs.d/.emacs.desktop.lock")
 
-;; remove desktop after it's been read
-;;(add-hook 'desktop-after-read-hook
-;;	  '(lambda ()
-;;	     ;; desktop-remove clears desktop-dirname
-;;	     (setq desktop-dirname-tmp desktop-dirname)
-;;	     (desktop-remove)
-;;	     (setq desktop-dirname desktop-dirname-tmp)))
-
-(defun saved-session ()
+(defun saved-session-exists-p ()
   (file-exists-p (concat desktop-dirname "/" desktop-base-file-name)))
 
 ;; use session-restore to restore the desktop manually
 (defun session-restore ()
   "Restore a saved emacs session."
   (interactive)
-  (if (saved-session)
+  (if (saved-session-exists-p)
       (desktop-read)
     (message "No desktop found.")))
 
@@ -293,33 +275,31 @@
 (defun session-save ()
   "Save an emacs session."
   (interactive)
-  (if (saved-session)
-      (if (y-or-n-p "Overwrite existing desktop? ")
-	  (desktop-save-in-desktop-dir)
-	(message "Session not saved."))
-  (desktop-save-in-desktop-dir)))
+  (if (saved-session-exists-p)
+      (desktop-save-in-desktop-dir)
+    ))
 
 ;; ask user whether to restore desktop at start-up
 (add-hook 'after-init-hook
 	  '(lambda ()
-	     (if (saved-session)
+	     (if (saved-session-exists-p)
 		 (if (y-or-n-p "Restore desktop? ")
-		     (session-restore)))))
-
+		     (progn
+		       (remove-desktop-lock-file)
+		       (session-restore))))))
 
 (defun save-desktop-on-exit ()
 	"ask whether to save on exit"
 	(interactive)
 	(if (y-or-n-p "Save desktop?")
-		(session-save)
-		(message "not saving desktop")))
+		(session-save)))
 
-;;(defun remove-desktop-lock-file ()
-;;  "removes the desktop lock file"
-;;  (delete-file "~/.emacs.d/.emacs.desktop.lock"))
+(defun remove-desktop-lock-file ()
+  "removes the desktop lock file... if it exists"
+  (if (file-exists-p desktop-lock-file)
+      (delete-file desktop-lock-file)))
 
 (add-hook 'kill-emacs-hook 'save-desktop-on-exit)
-;;(add-hook 'kill-emacs-hook 'remove-desktop-lock-file)
 
 (setq desktop-restore-frames t)
 (setq desktop-restore-in-current-display t)
