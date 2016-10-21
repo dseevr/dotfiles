@@ -142,6 +142,10 @@
 
 (add-to-list 'load-path "~/.emacs.d/extensions/")
 
+;; from: https://www.emacswiki.org/emacs/buffer-move.el
+;; TODO: need to re-run git-gutter after buffers are moved since the gutter vanishes
+(require 'buffer-move)
+
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
@@ -309,3 +313,6 @@
 (setq inhibit-startup-message t)
 
 (setq ring-bell-function 'ignore)
+
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
