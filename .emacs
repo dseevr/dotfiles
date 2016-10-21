@@ -147,7 +147,8 @@
 (ac-config-default)
 
 
-(setq ac-auto-show-menu 0.6)
+(setq ac-delay 0.5)
+(setq ac-auto-show-menu 0.5)
 (setq ac-menu-height 40)
 (setq ac-ignore-case 'smart)
 (setq make-backup-files nil)
