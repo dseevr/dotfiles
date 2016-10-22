@@ -146,9 +146,8 @@
 ;; TODO: need to re-run git-gutter after buffers are moved since the gutter vanishes
 (require 'buffer-move)
 (defun win-swap () "Swap windows using buffer-move.el" (interactive) (if (null (windmove-find-other-window 'right)) (buf-move-left) (buf-move-right)))
-(global-set-key (kbd"C-x <") 'win-swap)
-(global-set-key (kbd"C-x >") 'win-swap)
-
+(global-set-key (kbd "C-x <") 'win-swap)
+(global-set-key (kbd "C-x >") 'win-swap)
 
 (require 'go-autocomplete)
 (require 'auto-complete-config)
@@ -336,11 +335,14 @@
 )
 (global-set-key (kbd "C-c C-d") 'duplicate-line)
 
-;; can't set (setq kill-whole-line t) because that breaks (duplicate-line), so just
-;; redefine C-k to call (kill-line) twice so that it consumes the newline
+(global-unset-key (kbd "C-k"))
+
+;; can't set (setq kill-whole-line t) because that breaks (duplicate-line)
+;; new logic: if the current line has 0 characters, just call (kill-line) once
+;;            otherwise, call it twice
 (defun kill-line-including-newline ()
   (interactive)
-  (kill-line)
-  (kill-line)
-)
+  (if (not (zerop (- (line-end-position) (line-beginning-position))))
+    (kill-line))
+  (kill-line))
 (global-set-key (kbd "C-k") 'kill-line-including-newline)
