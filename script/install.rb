@@ -10,8 +10,8 @@ HOME_DIR = ENV["HOME"]
 Dir.glob("#{BASE_DIR}/.*").each do |source_path|
   filename = source_path.split("/").last
 
-  # skip current, parent, and git directories
-  next if %w[. .. .git].include?(filename)
+  # skip current, parent, git directory, and .gitignore file
+  next if %w[. .. .git .gitignore].include?(filename)
 
   target_path = "#{HOME_DIR}/#{filename}"
 
