@@ -322,3 +322,25 @@
 
 (when (fboundp 'winner-mode)
   (winner-mode 1))
+
+(defun duplicate-line ()
+  (interactive)
+  (save-excursion
+    (move-beginning-of-line 1)
+    (kill-line)
+    (yank)
+    (open-line 1)
+    (next-line 1)
+    (yank)
+  )
+)
+(global-set-key (kbd "C-c C-d") 'duplicate-line)
+
+;; can't set (setq kill-whole-line t) because that breaks (duplicate-line), so just
+;; redefine C-k to call (kill-line) twice so that it consumes the newline
+(defun kill-line-including-newline ()
+  (interactive)
+  (kill-line)
+  (kill-line)
+)
+(global-set-key (kbd "C-k") 'kill-line-including-newline)
