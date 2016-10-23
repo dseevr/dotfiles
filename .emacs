@@ -64,6 +64,8 @@
     
     markdown-mode
 
+    rust-mode
+
     json-mode
     yaml-mode
 
