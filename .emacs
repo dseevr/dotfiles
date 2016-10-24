@@ -151,6 +151,9 @@
 (global-set-key (kbd "C-x <") 'win-swap)
 (global-set-key (kbd "C-x >") 'win-swap)
 
+(global-unset-key (kbd "C-x C-o"))
+(global-set-key (kbd "C-x C-o") 'win-swap)
+
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
