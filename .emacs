@@ -340,8 +340,6 @@
 )
 (global-set-key (kbd "C-c C-d") 'duplicate-line)
 
-(global-unset-key (kbd "C-k"))
-
 ;; can't set (setq kill-whole-line t) because that breaks (duplicate-line)
 ;; new logic: if the current line has 0 characters, just call (kill-line) once
 ;;            otherwise, call it twice
@@ -349,5 +347,17 @@
   (interactive)
   (if (not (zerop (- (line-end-position) (line-beginning-position))))
     (kill-line))
-  (kill-line))
+  (kill-line)
+)
+(global-unset-key (kbd "C-k"))
 (global-set-key (kbd "C-k") 'kill-line-including-newline)
+
+(defun kill-line-backwards ()
+  (interactive)
+  (let ((start_column (current-column)))
+    (move-beginning-of-line 1)
+    (delete-forward-char start_column)
+  )
+)
+(global-unset-key (kbd "C-l"))
+(global-set-key (kbd "C-l") 'kill-line-backwards)
