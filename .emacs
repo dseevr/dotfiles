@@ -341,14 +341,22 @@
 (global-set-key (kbd "C-c C-d") 'duplicate-line)
 
 ;; can't set (setq kill-whole-line t) because that breaks (duplicate-line)
-;; new logic: if the current line has 0 characters, just call (kill-line) once
-;;            otherwise, call it twice
+;; new logic: if the current line has 0 characters or we're not at the beginning
+;;            of the line, just call (kill-line) once.  otherwise, call it twice.
 (defun kill-line-including-newline ()
   (interactive)
-  (if (not (zerop (- (line-end-position) (line-beginning-position))))
+  (if
+    (and
+      (not
+       (zerop
+	(-
+	 (line-end-position)
+	 (line-beginning-position))))
+      (=
+       (current-column)
+       0))
     (kill-line))
-  (kill-line)
-)
+  (kill-line))
 (global-unset-key (kbd "C-k"))
 (global-set-key (kbd "C-k") 'kill-line-including-newline)
 
