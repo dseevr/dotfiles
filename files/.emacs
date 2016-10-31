@@ -369,3 +369,5 @@
 )
 (global-unset-key (kbd "C-l"))
 (global-set-key (kbd "C-l") 'kill-line-backwards)
+
+(global-unset-key (kbd "C-\\"))
