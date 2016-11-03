@@ -63,6 +63,7 @@
     find-file-in-repository
     
     markdown-mode
+    nginx-mode
 
     rust-mode
 
@@ -83,6 +84,8 @@
 (dolist (package my-packages)
   (unless (package-installed-p package)
     (package-install package)))
+
+(add-to-list 'auto-mode-alist '("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
 
 ;;Custom Compile Command
 (defun go-mode-setup ()
