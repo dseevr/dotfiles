@@ -374,3 +374,7 @@
 (global-set-key (kbd "C-l") 'kill-line-backwards)
 
 (global-unset-key (kbd "C-\\"))
+
+;; reload buffers when files change on disk
+(global-auto-revert-mode t)
+(auto-revert-mode t)
