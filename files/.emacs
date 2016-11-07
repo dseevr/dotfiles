@@ -378,3 +378,9 @@
 ;; reload buffers when files change on disk
 (global-auto-revert-mode t)
 (auto-revert-mode t)
+
+(add-hook 'after-revert-hook 'git-gutter:update-all-windows)
+;; TODO: this is super inefficient, but it works and doesn't seem to be noticeable...
+(add-hook 'buffer-list-update-hook 'git-gutter:update-all-windows)
+
+(global-set-key (kbd "C-x C-g") 'git-gutter:update-all-windows)
