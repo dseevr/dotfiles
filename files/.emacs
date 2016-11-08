@@ -379,8 +379,22 @@
 (global-auto-revert-mode t)
 (auto-revert-mode t)
 
-(add-hook 'after-revert-hook 'git-gutter:update-all-windows)
+;(add-hook 'after-revert-hook 'git-gutter:update-all-windows)
 ;; TODO: this is super inefficient, but it works and doesn't seem to be noticeable...
-(add-hook 'buffer-list-update-hook 'git-gutter:update-all-windows)
+;(add-hook 'buffer-list-update-hook 'git-gutter:update-all-windows)
 
-(global-set-key (kbd "C-x C-g") 'git-gutter:update-all-windows)
+(defun revert-all-buffers ()
+  "Refreshes all open buffers from their respective files"
+  (interactive)
+  (let* ((list (buffer-list))
+	 (buffer (car list)))
+    (while buffer
+      (when (and (buffer-file-name buffer)
+		 (not (buffer-modified-p buffer)))
+	(set-buffer buffer)
+	(revert-buffer t t t))
+      (setq list (cdr list))
+      (setq buffer (car list))))
+  )
+
+(global-set-key (kbd "C-x <end>") 'revert-all-buffers)
