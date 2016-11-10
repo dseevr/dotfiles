@@ -410,3 +410,7 @@
   )
 
 (global-set-key (kbd "C-x <end>") 'revert-all-buffers)
+
+;; always follow symlinks without prompting
+;; minibuffer still shows a warning if the symlink points to a git-tracked file
+(setq vc-follow-symlinks nil)
