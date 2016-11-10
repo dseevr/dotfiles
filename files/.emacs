@@ -278,6 +278,11 @@
 (setq desktop-base-file-name "emacs-desktop")
 (setq desktop-lock-file "~/.emacs.d/.emacs.desktop.lock")
 
+(defun needs-desktop-save-p ()
+      (eq
+       nil
+       (getenv "NOSAVE")))
+
 (defun saved-session-exists-p ()
   (file-exists-p (concat desktop-dirname "/" desktop-base-file-name)))
 
@@ -285,7 +290,8 @@
 (defun session-restore ()
   "Restore a saved emacs session."
   (interactive)
-  (if (saved-session-exists-p)
+  (if
+       (saved-session-exists-p)
       (desktop-read)
     (message "No desktop found.")))
 
@@ -300,7 +306,10 @@
 ;; ask user whether to restore desktop at start-up
 (add-hook 'after-init-hook
 	  '(lambda ()
-	     (if (saved-session-exists-p)
+	     (if
+		 (and
+		  (needs-desktop-save-p)
+		  (saved-session-exists-p))
 		 (if (y-or-n-p "Restore desktop? ")
 		     (progn
 		       (remove-desktop-lock-file)
@@ -309,7 +318,10 @@
 (defun save-desktop-on-exit ()
 	"ask whether to save on exit"
 	(interactive)
-	(if (y-or-n-p "Save desktop?")
+	(if
+	    (and
+	     (needs-desktop-save-p)
+	     (y-or-n-p "Save desktop?"))
 		(session-save)))
 
 (defun remove-desktop-lock-file ()
