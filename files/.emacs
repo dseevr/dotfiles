@@ -118,6 +118,13 @@
  '(custom-safe-themes
    (quote
     ("8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+ '(git-gutter:window-width 2)
+ '(grep-find-ignored-directories
+   (quote
+    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "vendor" "log")))
+ '(helm-grep-ignored-directories
+   (quote
+    ("SCCS/" "RCS/" "CVS/" "MCVS/" ".svn/" ".git/" ".hg/" ".bzr/" "_MTN/" "_darcs/" "{arch}/" ".gvfs/" "vendor" "Godeps")))
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
@@ -130,7 +137,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil))))
+ '(my-carriage-return-face ((((class color)) (:foreground "#464646"))) t)
+ '(my-space-face ((((class color)) (:foreground "#464646"))) t)
+ '(my-tab-face ((((class color)) (:foreground "#313131"))) t))
 
 
 (require 'find-file-in-repository)
@@ -187,8 +197,7 @@
 (require 'git-gutter)
 (global-git-gutter-mode +1)
 
-(custom-set-variables
-  '(git-gutter:window-width 2))
+
 
 ;;(custom-set-variables
 ;; '(git-gutter:update-interval 2))
@@ -209,15 +218,12 @@
 (helm-mode 1)
 
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 
 ;; TODO: write functions which will enable/disable/toggle drawing of whitespace
 ;;       sometimes it's more convenient to copy lines using the terminal rather than in emacs itself
-(custom-set-faces
- '(my-carriage-return-face ((((class color)) (:foreground "#464646"))) t)
- '(my-tab-face ((((class color)) (:foreground "#313131"))) t)
- '(my-space-face ((((class color)) (:foreground "#464646"))) t)
-)
+
 
 ;; add custom font locks to all buffers and all files
 (add-hook
@@ -264,12 +270,7 @@
 (setq ido-everywhere t)
 (setq ido-case-fold t)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+
 (put 'upcase-region 'disabled nil)
 
 ;; use only one desktop
