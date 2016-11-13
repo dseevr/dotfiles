@@ -121,7 +121,7 @@
  '(git-gutter:window-width 2)
  '(grep-find-ignored-directories
    (quote
-    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "vendor" "log")))
+    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" "vendor" "log" "Godeps")))
  '(helm-grep-ignored-directories
    (quote
     ("SCCS/" "RCS/" "CVS/" "MCVS/" ".svn/" ".git/" ".hg/" ".bzr/" "_MTN/" "_darcs/" "{arch}/" ".gvfs/" "vendor" "Godeps")))
@@ -217,9 +217,33 @@
 
 (helm-mode 1)
 
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
+;;(global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+(setq helm-M-x-fuzzy-match t)
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+(setq helm-buffers-fuzzy-matching t
+            helm-recentf-fuzzy-match t)
+
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match    t)
+
+(add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+
+(global-set-key (kbd "C-c h o") 'helm-occur)
+
+(helm-autoresize-mode t)
+
+
+(when (executable-find "ack-grep")
+  (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
+	helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
 
 ;; TODO: write functions which will enable/disable/toggle drawing of whitespace
 ;;       sometimes it's more convenient to copy lines using the terminal rather than in emacs itself
