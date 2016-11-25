@@ -50,7 +50,15 @@
   '(
     go-mode
     go-eldoc
-    go-autocomplete
+    ;;go-autocomplete
+    golint
+
+    helm
+
+    dockerfile-mode
+
+    company
+    company-go
 
     exec-path-from-shell
 
@@ -167,15 +175,27 @@
 (global-unset-key (kbd "C-x C-o"))
 (global-set-key (kbd "C-x C-o") 'win-swap)
 
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
+;;(require 'go-autocomplete)
+;;(require 'auto-complete-config)
+;;(ac-config-default)
+;;(setq ac-delay 0.5)
+;;(setq ac-auto-show-menu 5)
+;;(setq ac-menu-height 40)
+;;(setq ac-ignore-case 'smart)
+
+(require 'company)                                   ; load company mode
+(require 'company-go)                                ; load company mode go backend
+
+(setq company-tooltip-limit 40)                      ; bigger popup window
+(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+;;(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+(add-hook 'go-mode-hook (lambda ()
+			  (set (make-local-variable 'company-backends) '(company-go))
+			  (company-mode)))
 
 
-(setq ac-delay 0.5)
-(setq ac-auto-show-menu 0.5)
-(setq ac-menu-height 40)
-(setq ac-ignore-case 'smart)
 (setq make-backup-files nil)
 
 (with-eval-after-load 'go-mode
