@@ -14,24 +14,11 @@
 ;; mv guru $GOPATH/bin
 ;; ln -s ~/go/bin/guru ~/go/bin/oracle
 ;;
-;; manually copy dockerfile-mode.el to ~/.emacs.d/extensions
-;; from: https://github.com/spotify/dockerfile-mode
-;;
 ;; manually copy git-gutter.el to ~/.emacs.d/extensions
 ;; from https://github.com/syohex/emacs-git-gutter
 ;;
 ;; manually copy go-autocomplete.el to ~/.emacs.d/extensions
 ;; from: https://github.com/nsf/gocode/tree/master/emacs
-;;
-;; manually clone async from https://github.com/jwiegley/emacs-async
-;; because melpa isn't auto-installing it properly
-;; git clone https://github.com/jwiegley/emacs-async.git ~/.emacs.d/packages/async
-;;
-;; manually clone helm from https://github.com/emacs-helm/helm
-;; because melpa can't auto-install it because async can't auto-install lol
-;; git clone https://github.com/emacs-helm/helm.git ~/.emacs.d/packages/helm
-;;
-;; run `make` in the helm dir
 ;;
 
 (set-language-environment "UTF-8")
@@ -50,6 +37,7 @@
   '(
     go-mode
     go-eldoc
+
     ;;go-autocomplete
     golint
 
@@ -323,11 +311,6 @@
 (setq desktop-base-file-name "emacs-desktop")
 (setq desktop-lock-file "~/.emacs.d/.emacs.desktop.lock")
 
-(defun needs-desktop-save-p ()
-      (eq
-       nil
-       (getenv "NOSAVE")))
-
 (defun saved-session-exists-p ()
   (file-exists-p (concat desktop-dirname "/" desktop-base-file-name)))
 
@@ -351,22 +334,16 @@
 ;; ask user whether to restore desktop at start-up
 (add-hook 'after-init-hook
 	  '(lambda ()
-	     (if
-		 (and
-		  (needs-desktop-save-p)
-		  (saved-session-exists-p))
 		 (if (y-or-n-p "Restore desktop? ")
 		     (progn
 		       (remove-desktop-lock-file)
-		       (session-restore))))))
+		       (session-restore)))))
 
 (defun save-desktop-on-exit ()
 	"ask whether to save on exit"
 	(interactive)
 	(if
-	    (and
-	     (needs-desktop-save-p)
-	     (y-or-n-p "Save desktop?"))
+	     (y-or-n-p "Save desktop?")
 		(session-save)))
 
 (defun remove-desktop-lock-file ()
