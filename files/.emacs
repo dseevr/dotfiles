@@ -45,6 +45,8 @@
 
     dockerfile-mode
 
+    anaconda-mode
+
     company
     company-go
 
@@ -183,6 +185,8 @@
 			  (set (make-local-variable 'company-backends) '(company-go))
 			  (company-mode)))
 
+
+(add-hook 'python-mode-hook 'anaconda-mode)
 
 (setq make-backup-files nil)
 
