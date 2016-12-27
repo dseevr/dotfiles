@@ -47,6 +47,8 @@
 
     anaconda-mode
 
+    clang-format
+
     company
     company-go
 
@@ -440,3 +442,5 @@
 ;; always follow symlinks without prompting
 ;; minibuffer still shows a warning if the symlink points to a git-tracked file
 (setq vc-follow-symlinks nil)
+
+(add-hook 'after-init-hook 'global-company-mode)
