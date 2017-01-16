@@ -415,6 +415,9 @@
 
 (global-unset-key (kbd "C-\\"))
 
+(global-unset-key (kbd "C-c C-v"))
+(global-set-key (kbd "C-c C-v") 'comment-or-uncomment-region)
+
 ;; reload buffers when files change on disk
 (global-auto-revert-mode t)
 (auto-revert-mode t)
