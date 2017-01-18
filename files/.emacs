@@ -66,6 +66,7 @@
     nginx-mode
 
     rust-mode
+    terraform-mode
 
     json-mode
     yaml-mode
