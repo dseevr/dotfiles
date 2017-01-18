@@ -455,3 +455,9 @@
         (clang-format-buffer)))
 
 (add-hook 'before-save-hook #'clang-format-before-save-hook)
+
+(defun indent-buffer ()
+      (interactive)
+      (save-excursion
+        (indent-region (point-min) (point-max) nil)))
+
