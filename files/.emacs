@@ -68,6 +68,10 @@
     rust-mode
     terraform-mode
 
+    inf-ruby
+    flymake-ruby
+    ruby-end
+
     json-mode
     yaml-mode
 
@@ -461,3 +465,10 @@
       (save-excursion
         (indent-region (point-min) (point-max) nil)))
 
+
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+
+(setq ruby-deep-indent-paren nil)
+
+(global-set-key (kbd "C-c r r") 'inf-ruby)
