@@ -12,7 +12,7 @@
 ;; go get golang.org/x/tools/cmd/guru
 ;; go build golang.org/x/tools/cmd/guru
 ;; mv guru $GOPATH/bin
-;; ln -s ~/go/bin/guru ~/go/bin/oracle
+;; ln -s $GOPATH/bin/guru $GOPATH/bin/oracle
 ;;
 ;; manually copy git-gutter.el to ~/.emacs.d/extensions
 ;; from https://github.com/syohex/emacs-git-gutter
@@ -38,7 +38,7 @@
     go-mode
     go-eldoc
 
-    ;;go-autocomplete
+    go-autocomplete
     golint
 
     helm
