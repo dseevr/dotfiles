@@ -470,3 +470,5 @@
 (setq ruby-deep-indent-paren nil)
 
 (global-set-key (kbd "C-c r r") 'inf-ruby)
+
+(global-set-key (kbd "C-x r") 'redraw-display)
