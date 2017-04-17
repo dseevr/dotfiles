@@ -1,3 +1,6 @@
+;; upgrading all outdated packages:
+;; M-x list-packages U x
+
 ;; setup:
 ;; go get github.com/golang/lint/golint
 ;; go get github.com/gordonklaus/ineffassign
@@ -13,12 +16,6 @@
 ;; go build golang.org/x/tools/cmd/guru
 ;; mv guru $GOPATH/bin
 ;; ln -s $GOPATH/bin/guru $GOPATH/bin/oracle
-;;
-;; manually copy git-gutter.el to ~/.emacs.d/extensions
-;; from https://github.com/syohex/emacs-git-gutter
-;;
-;; manually copy go-autocomplete.el to ~/.emacs.d/extensions
-;; from: https://github.com/nsf/gocode/tree/master/emacs
 ;;
 
 (set-language-environment "UTF-8")
@@ -233,6 +230,7 @@
 
 (setq helm-mode-fuzzy-match t)
 (setq helm-completion-in-region-fuzzy-match t)
+;;(setq helm-ff-auto-update-initial-value t)
 
 (helm-mode 1)
 
