@@ -472,3 +472,7 @@
 (global-set-key (kbd "C-c r r") 'inf-ruby)
 
 (global-set-key (kbd "C-x r") 'redraw-display)
+
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+
