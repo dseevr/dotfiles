@@ -44,8 +44,6 @@
 
     anaconda-mode
 
-    clang-format
-
     company
     company-go
 
@@ -450,13 +448,6 @@
 (setq vc-follow-symlinks nil)
 
 (add-hook 'after-init-hook 'global-company-mode)
-
-
-(defun clang-format-before-save-hook ()
-  (when c-buffer-is-cc-mode
-        (clang-format-buffer)))
-
-(add-hook 'before-save-hook #'clang-format-before-save-hook)
 
 (defun indent-buffer ()
       (interactive)
