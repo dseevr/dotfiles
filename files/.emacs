@@ -17,6 +17,11 @@
 ;; mv guru $GOPATH/bin
 ;; ln -s $GOPATH/bin/guru $GOPATH/bin/oracle
 ;;
+;; manually copy find-file-in-repository.el from
+;; https://raw.githubusercontent.com/dseevr/find-file-in-repository/master/find-file-in-repository.el
+;; to ~/.emacs.d/extensions/find-file-in-repository.el
+;; and make sure the find-file-in-repository package is not installed through melpa
+;;
 
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
@@ -55,8 +60,6 @@
 
     git-gutter
 
-    find-file-in-repository
-    
     markdown-mode
     nginx-mode
 
@@ -128,7 +131,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (git-gutter window-number smooth-scroll project-explorer markdown-mode json-mode ido-yes-or-no ido-vertical-mode ido-ubiquitous go-eldoc go-autocomplete find-file-in-repository exec-path-from-shell buffer-move)))
+    (git-gutter window-number smooth-scroll project-explorer markdown-mode json-mode ido-yes-or-no ido-vertical-mode ido-ubiquitous go-eldoc go-autocomplete exec-path-from-shell buffer-move)))
  '(shift-select-mode t)
  '(show-trailing-whitespace t)
  '(track-eol t))
@@ -142,6 +145,7 @@
  '(my-space-face ((((class color)) (:foreground "#464646"))) t)
  '(my-tab-face ((((class color)) (:foreground "#313131"))) t))
 
+(add-to-list 'load-path "~/.emacs.d/extensions/")
 
 (require 'find-file-in-repository)
 (require 'ido)
@@ -154,8 +158,6 @@
 
 (require 'ido-yes-or-no)
 (ido-yes-or-no-mode 1)
-
-(add-to-list 'load-path "~/.emacs.d/extensions/")
 
 ;; from: https://www.emacswiki.org/emacs/buffer-move.el
 ;; TODO: need to re-run git-gutter after buffers are moved since the gutter vanishes
