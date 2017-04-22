@@ -63,6 +63,8 @@
     markdown-mode
     nginx-mode
 
+    undo-tree
+
     rust-mode
     terraform-mode
 
@@ -468,4 +470,7 @@
 
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
+
+(global-undo-tree-mode)
+(global-set-key (kbd "M-/") 'undo-tree-visualize)
 
