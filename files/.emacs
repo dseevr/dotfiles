@@ -475,3 +475,5 @@
 (global-set-key (kbd "M-/") 'undo-tree-visualize)
 
 (electric-pair-mode)
+
+(tool-bar-mode)
