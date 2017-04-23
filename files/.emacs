@@ -478,8 +478,11 @@
 
 (electric-pair-mode)
 
-(tool-bar-mode)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 
 (global-set-key (kbd "C-{") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-}") 'mc/mark-next-like-this)
+
