@@ -65,6 +65,8 @@
 
     undo-tree
 
+    multiple-cursors
+
     rust-mode
     terraform-mode
 
@@ -477,3 +479,7 @@
 (electric-pair-mode)
 
 (tool-bar-mode)
+
+
+(global-set-key (kbd "C-{") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-}") 'mc/mark-next-like-this)
