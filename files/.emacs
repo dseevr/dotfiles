@@ -45,6 +45,8 @@
 
     helm
 
+    powerline
+
     dockerfile-mode
 
     anaconda-mode
