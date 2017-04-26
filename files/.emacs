@@ -496,3 +496,4 @@
 
 (setq powerline-default-separator 'wave)
 
+(set-cursor-color "#ff0000")
