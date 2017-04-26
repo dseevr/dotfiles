@@ -94,6 +94,9 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+(custom-set-variables
+  '(markdown-command "/usr/bin/pandoc"))
+
 (add-to-list 'auto-mode-alist '("/nginx/sites-\\(?:available\\|enabled\\)/" . nginx-mode))
 
 ;;Custom Compile Command
