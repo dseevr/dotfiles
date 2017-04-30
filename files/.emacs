@@ -1,3 +1,7 @@
+;;; package -- Summary
+
+;;; Commentary:
+
 ;; upgrading all outdated packages:
 ;; M-x list-packages U x
 
@@ -23,6 +27,7 @@
 ;; and make sure the find-file-in-repository package is not installed through melpa
 ;;
 
+;;; Code:
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 
@@ -31,7 +36,7 @@
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "https://melpa.org/packages/")
+   '("melpa-stable" . "https://stable.melpa.org/packages/")
    t)
   (package-initialize))
 
@@ -104,6 +109,7 @@
   (setq compile-command "go build -v && go test -v && go vet && golint && errcheck")
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (go-eldoc-setup)
+  (defvar gofmt-command)
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (local-set-key (kbd "M-.") 'godef-jump))
@@ -500,3 +506,10 @@
 (setq powerline-default-separator 'wave)
 
 (set-cursor-color "#ff0000")
+
+(global-flycheck-mode)
+
+
+(provide '.emacs)
+;;; .emacs ends here
+
