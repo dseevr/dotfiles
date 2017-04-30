@@ -509,6 +509,8 @@
 
 (global-flycheck-mode)
 
+(global-set-key (kbd "C-c a g") 'helm-do-grep-ag)
+
 
 (provide '.emacs)
 ;;; .emacs ends here
