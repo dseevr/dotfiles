@@ -27,6 +27,9 @@
 ;; and make sure the find-file-in-repository package is not installed through melpa
 ;;
 
+;; TODO: hook electric-pair-mode so it doesn't insert a ) ] } etc. if there's a
+;; character immediately following
+
 ;;; Code:
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
