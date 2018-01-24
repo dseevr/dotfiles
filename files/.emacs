@@ -529,6 +529,10 @@
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
 
+;; use f1 for help instead of C-h
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
+
 
 (provide '.emacs)
 ;;; .emacs ends here
