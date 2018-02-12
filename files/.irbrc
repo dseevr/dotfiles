@@ -94,7 +94,7 @@ def cc(price, strike, premium, contract_count)
   ]
 end
 
-def bh(b1, b2, cash=nil)
+def bh(b1, b2, cash=nil, price1=nil, price2=nil)
   total = b1.to_f + b2.to_f
 
   p2 = b1/total
@@ -106,6 +106,13 @@ def bh(b1, b2, cash=nil)
 
     puts "Long: $%.2f (%.1f%%)" % [c1, p1 * 100]
     puts "Short: $%.2f (%.1f%%)" % [c2, p2 * 100]
+
+    if price1 && price2
+      shares1 = c1 / price1
+      shares2 = c2 / price2
+
+      puts "Buy %d shares, Sell %d shares" % [shares1, shares2]
+    end
   else
     puts "Long: #{p1}"
     puts "Short: #{p2}"
