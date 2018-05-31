@@ -59,6 +59,8 @@
 
     anaconda-mode
 
+    rg
+
     company
     company-go
 
@@ -123,6 +125,7 @@
 
 (add-to-list 'load-path (concat (getenv "GOPATH")  "/src/github.com/golang/lint/misc/emacs"))
 (require 'golint)
+
 
 ;;Project Explorer
 (require 'project-explorer)
@@ -528,11 +531,15 @@
 (global-unset-key (kbd "<M-right>"))
 (global-unset-key (kbd "<M-up>"))
 (global-unset-key (kbd "<M-down>"))
+(global-unset-key (kbd "RET"))
+
+(global-set-key (kbd "C-m") 'newline)
 
 ;; use f1 for help instead of C-h
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+(require 'rg)
 
 (provide '.emacs)
 ;;; .emacs ends here
