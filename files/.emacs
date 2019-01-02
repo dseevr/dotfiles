@@ -539,6 +539,9 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+;; emacs 25.0 ayyyyyy lmao
+(define-key global-map "\M-*" 'pop-tag-mark)
+
 (require 'rg)
 
 (provide '.emacs)
